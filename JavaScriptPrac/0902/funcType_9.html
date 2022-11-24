@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function type</title>
+</head>
+
+<body>
+    <script>
+        //즉시 실행 함수(IIFE, Immediately Invoke Function Expression)
+        function myFunc() {
+            let a = 1, b = 3;
+            document.write(a * b);
+        }
+        myFunc();
+
+        document.write("<br>");
+
+        // 즉시 실행 함수-함수가 즉시 실행하므로 함수 이름이 없어도 된다
+        (function () {
+            let a = 1, b = 3;
+            document.write(a * b);
+        }());
+
+        document.write("<br>");
+
+        //내부함수
+        function parent(param){
+            let parentVal=param;
+            function children(){
+                let childVal="hong";
+                console.log(parentVal,childVal);
+                document.write(parentVal+childVal);
+            }
+            children();
+        }
+        parent('Hello.');
+
+        //재귀함수
+        // factorial 3!=3*2*1
+        function factorial(n){
+            if(n<2){
+                return 1;
+            }return factorial(n-1)*n;
+        }
+        console.log(factorial(6));
+
+        //콜백함수
+        
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

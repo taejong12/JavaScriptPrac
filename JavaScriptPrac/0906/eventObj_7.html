@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object</title>
+</head>
+
+<body>
+    <strong id="message"></strong>
+    <div class="container">
+        <button id="btn1">숨기기1</button>
+        <button id="btn2">숨기기2</button>
+    </div>
+
+    <a href="http://www.naver.com">네이버</a>
+
+    <form>
+        <label for="chkbox">체크박스</label>
+        <input type="checkbox" id="chkbox" />
+    </form>
+
+    <script>
+        const link = document.querySelector('a');
+        link.addEventListener('click', function (event) {
+            console.log(event);
+            console.log(event.cancelable);
+            event.preventDefault(); // 해당 내용의 동작(여기서는 네이버의 링크이동)이 취소가 가능하면 막아버린다
+        });
+
+        const chkbox = document.querySelector('#chkbox');
+        chkbox.addEventListener('click', function (e) {
+            msg.innerHTML += '<code>preventDefault()</code><br>'
+            e.preventDefault();
+        });
+
+        const msg = document.querySelector('#message');
+
+        const body = document.querySelector('body');
+        function showType(e) {
+            e.preventDefault();
+            msg.innerHTML = e.type + ':' + e.keyCode;
+        }
+        body.addEventListener('keydown', showType);
+        body.addEventListener('keyup', showType);
+
+        const container = document.querySelector('.container');
+        function hide(e) {
+            e.target.style.visibility = 'hidden';
+            console.log(e);
+            console.log(this);
+            console.log(e.currentTarget);
+            console.log(e.type);
+        }
+        // hide 뒤에 ()가 없을 때 해당하는 이벤트에서 펑션을 실행시키겠다는 의미지 지나갈 때 바로 실행시키겠다는 말이 아니다
+        // ('click', hide);  평션 hide 뒤에 ()이 없다면 이벤트가 발생했을 때 해당 함수를 실행시키겠다는 의미 ()가 있는 것과 없는 것은 다르다 
+        // 객체 선언만 한것이다 
+        // 펑션 뒤에 ()가 있으면 바로 실행하는 거고(결과값) ()가 없으면 펑션 객체 자체가 들어간다(전체내용)
+        container.addEventListener('click', hide);
+        // 타겟이 container 이기 때문에 버튼을 눌러도 this는 container를 가리킨다
+        // type은 이벤트 종류를 가리킨다
+
+        // container.addEventListener('click',hide,{
+        //     capture:
+        //     once:
+        //     passive:
+        // });
+
+        function printCoord(e, msg) {
+            console.log(e);
+            msg.innerHTML = 'x:' + e.clientX + ' y:' + e.clientY;
+        }
+        addEventListener('click', function (e) {
+            printCoord(e, msg);
+        });
+    </script>
+
+</body>
+
+</html>

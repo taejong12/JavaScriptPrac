@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+
+<body>
+    <script>
+
+        function Dog(name, color, age, gender) {
+            this.name = name;
+            this.color = color;
+            this.age = age;
+            this.gender = gender;
+        }
+        console.log(Dog);
+
+        Dog.prototype.family = "시추";
+        Dog.prototype.breed = function () {
+            return this.name + " " + this.age + " " + this.family;
+        }
+        console.log(Dog, Dog.prototype);
+
+        let pet = new Dog("댕댕이", "검은색", 2, "숫컷");
+        console.log(pet);
+        console.log(pet.breed());
+        let pet2 = new Dog("휜둥이", "하얀색", 4, "암컷");
+        console.log(pet2);
+        console.log(pet2.breed());
+
+        delete pet.color;
+        console.log(pet);
+
+        let obj = { a: 1, b: 2, c: 3 };
+        let arr = [1, 2, 3];
+
+        console.log("1111111111");
+        // in은 key 값이 찍힌다
+        for (let item in obj) {
+            console.log(item);
+        }
+
+        // iterable 객체  // iterable 인터페이스를 상속 받은 애들만 사용 가능 일반 객체는 상속이 되어있지 않아 사용불가
+        // 반복 가능한(iterable, 이터러블) 객체는 배열을 일반화한 객체입니다. 
+        // 이터러블 이라는 개념을 사용하면 어떤 객체에든 for..of 반복문을 적용할 수 있습니다.
+        // 배열은 대표적인 이터러블입니다. 
+        // 배열 외에도 다수의 내장 객체가 반복 가능합니다. 
+        // 문자열 역시 이터러블의 예입니다.
+        // 배열이 아닌 객체가 있는데, 이 객체가 어떤 것들의 컬렉션(목록, 집합 등)을 나타내고 있는 경우, 
+        // for..of 문법을 적용할 수만 있다면 컬렉션을 순회하는데 유용할 겁니다.
+      
+        // for(let item of obj){
+        //     console.log(item);
+        // } // obj is not iterable // Array, Map, Set, arguments 객체 등 에서만 사용가능
+
+        // index 값
+        for (let item in arr) {
+            console.log(item);
+        }
+
+        // of는 value 값
+        for (let item of arr) {
+            console.log(item);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

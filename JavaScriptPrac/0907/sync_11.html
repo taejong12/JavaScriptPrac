@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 처리</title>
+</head>
+<body>
+    동기 : 하나의 요청 완료한 뒤 다음 요청을 실행
+    비동기 : 하나의 요청 완료 전에 다음 요청을 실행, 다른 업무가 있더라도 내 업무를 계속 처리
+    <script>
+        // function buy(item, price, quantity){
+        //     console.log(`${item}상품을 ${quantity}개 선택하여 계산대로 이동`);
+        //     console.log("계산 진행중");
+        //     var total = price*quantity;
+        //     return total;
+        // }
+        // function pay(tot){
+        //     console.log(tot+'원 지불');
+        // }
+        // var tot=buy('사과', 1000, 5);
+        // pay(tot);
+
+        // 비동기 방식
+        // function buy(item, price, quantity){
+        //     console.log(`${item}상품을 ${quantity}개 선택하여 계산대로 이동`);
+
+        //     setTimeout(function(){
+        //         console.log("계산 진행중");
+        //         var total = price*quantity;
+        //         return total;
+        //     },1000);
+        // }
+        // function pay(tot){
+        //     console.log(tot+'원 지불');
+        // }
+        // // total 값이 딜레이로 늦게 들어오는데 pay는 그냥 쭉 실행되므로 결과값이 안 들어간다
+        // var tot=buy('사과', 1000, 5);
+        // pay(tot);
+        
+        
+        
+        // 콜백함수- 외부함수를 불러와서 처리
+        // 계산이 완료되고 결과를 찍어줘야 한다
+        // 콜백함수를 넣어준다
+        // pay라는 함수를 콜백함수로 집어넣겠다 비동기에서 넘어가는 부분이라서
+        // 리턴이 아닌 콜백함수로 집어넣어서 pay 함수로 쓰겠다
+        function buy(item, price, quantity, callback){ 
+            console.log(`${item}상품을 ${quantity}개 선택하여 계산대로 이동`);
+            
+            setTimeout(function() {
+                console.log("계산 진행중");
+                var total = price*quantity;
+                callback(total);
+            },1000);
+        }
+        
+        function pay(tot){
+            console.log(tot+'원 지불');
+        }
+        
+        buy('사과', 1000, 5, pay); // pay 콜백함수
+
+
+    
+        
+        
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Attribute</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        // 특정 태그에 태그명을 적으면 태그에는 속성이 들어가는데 해당하는 이름 속성명과 뒤에 그에 해당하는 값이 들어간다
+        // 해당 속성이 있나요 라고 확인하는건 hasAttribute 추가하는건 setAttribute 속성명과 값 각각 1개씩 총 2개(속성명, 값)가 들어가야 한다
+        // 해당 속성에서 값을 받아오는게 getAttribute
+        const input = document.querySelector('input[type=text]');
+        console.log(input);
+        if(!input.hasAttribute('placeholder')){
+            input.setAttribute('placeholder','hello!');
+        }
+        console.log(input.getAttribute('placeholder'));
+        
+    </script>
+</body>
+
+</html>

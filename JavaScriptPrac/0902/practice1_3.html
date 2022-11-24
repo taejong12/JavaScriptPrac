@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습</title>
+</head>
+
+<body>
+    <h1>숫자의 합(1~원하는 숫자까지)</h1>
+    <script>
+        let fnum = 1 //parseInt(window.prompt("1~원하는 숫자"));
+        let sum = 0;
+        while (fnum <= 10) {
+            if (fnum > 0) {
+                sum += fnum;
+                fnum++;
+            } else {
+                document.write("음수 제외");
+                document.write("<br>");
+                break;
+            }
+        }
+        document.write("총합:" + sum + "<br>");
+
+        document.write("<br>");
+
+
+        let oddsum = 0;
+
+        for (let i = 1; i <= 10; i++) {
+            if (i % 2 == 1) oddsum += i;
+        }
+        document.write("홀수의 총압" + oddsum + "<br>");
+
+        document.write("<br>");
+
+        let evensum = 0;
+        fnum = 1;
+        console.log(fnum);
+        while (fnum <= 10) {
+            if (fnum % 2 == 0) evensum += fnum;
+            fnum++;
+        }
+        document.write("짝수의 총합:" + evensum + "<br>");
+
+        document.write("<br>");
+
+        let tsum = 0;
+
+        for (let i = 1; i < 10; i++) {
+            if (i % 2 == 0 || i % 3 == 0)
+                tsum += i;
+            }
+    
+        document.write("2의 배수 3의 배수들만의 총합:" + tsum + "<br>");
+
+        document.write("<br>");
+
+        //합계가 125를 넘는 순간의 숫자와 총합
+        let limit = 0;
+        let lsum = 0;
+
+        for (let i = 0; i < 100; i++) {
+            lsum += i;
+            if (lsum >= 125) {
+                limit = i;
+                break;
+            }
+        }
+        document.write("마지막 숫자:" + limit+ " " + "합계:" + lsum);
+    </script>
+
+</body>
+
+</html>

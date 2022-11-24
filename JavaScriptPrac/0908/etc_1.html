@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>etc</title>
+</head>
+<body>
+    <script>
+        //타이머 api
+        const timeoutId = setTimeout(()=>{
+            console.log('setTimeout 실행 후 2초');
+        },2000);
+
+        const intervalId = setInterval(()=>{
+            console.log('3초마다 출력');
+        },3000);
+        
+        clearTimeout(timeoutId);
+        clearInterval(intervalId);
+
+        const func = function(){
+            console.log('wow');
+        }
+        func();
+        console.log(func);
+
+        setTimeout(()=>{
+            console.log('hello');
+        },0);
+        console.log('world');
+
+
+        //json (JavaScript Object Notation)
+
+        // {
+        //     "key":"value",
+        //     "arr":[1,2,3],
+        //     "nullProp":null
+        // }
+
+        let js = JSON.stringify({
+            "key":"value",
+            "arr":[1,2,3],
+            "nullProp":null
+        });
+        console.log(js);
+
+        // let jp = JSON.parse({
+        //     "key":"value",
+        //     "arr":[1,2,3],
+        //     "nullProp":null
+        // });
+        // console.log(jp);
+        let jp = JSON.parse(js);
+        console.log(jp);
+
+            // Proxy,Reflect,Intl,WeakMap,WeakSet,TypedArray
+
+    </script>
+</body>
+</html>

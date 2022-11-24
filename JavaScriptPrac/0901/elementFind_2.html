@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Find</title>
+
+</head>
+
+<body>
+    <ul>
+        <li>태그명</li>
+        <li id="findId">아이디</li>
+        <li class="findClass">클래스</li>
+        <li name="findName">이름</li>
+        <script>
+            document.write("<li class='write'>선택</li>");
+        </script>
+    </ul>
+    <script>
+        document.getElementsByTagName("li").item(0).innerHTML="tagName"; //태그명
+        document.getElementById("findId").innerHTML="id"; //아이디
+        document.getElementsByClassName("findClass").item(0).innerHTML="class"; //클래스
+        document.getElementsByName("findName").item(0).innerHTML="name"; //이름
+        document.querySelector(".write").innerHTML="query selector"; //선택
+        document.write(document.title); // Element Find
+        console.log(document.getElementsByTagName("li"));
+    </script>
+
+</body>
+
+</html>

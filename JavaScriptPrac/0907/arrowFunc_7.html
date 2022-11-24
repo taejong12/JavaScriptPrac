@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+</head>
+
+<body>
+    <script>
+        let p1 = function (x) { return x * x; };
+        const p2 = x => x * x;
+        console.log(p1(10), p2(20));
+
+        // let age = 23;
+        // let hi = (age < 20) ? function () {
+        //     window.alert('안녕.');
+        // } : function () { alert('안녕하세요.'); };
+        // hi();
+
+        let age=19;
+        let hi=(age<20)?()=>alert('안녕!'):()=>alert('안녕하시옵니까.');
+        hi();
+
+        // let arr=[1,2,3,4,5];
+        // const p3 = arr.map(function(item){
+        //     return item*item;
+        // });
+        // console.log(p3);
+
+        let arr=[1,2,3,4,5];
+        const p3 = arr.map(item=>item*item);
+        console.log(p3);
+
+        let group={
+            name:'모임',
+            member:['소정','주환','승진','태종'],
+            membership(){
+                console.log(this); // 여기서 this는 group을 가리킨다
+                let that=this;
+                this.member.forEach(function (mem){
+                    console.log(that); 
+                    // 내부함수 or 콜백함수는 참조할 변수가 없기 때문에 window를 참조하고 있다
+                    // 외부함수에 있는 전역 변수를 참조하기 위해 group을 참조하고 있는 this를 that에 넣고 변수를 사용했다
+                    // this는 전역 변수를 참조한다
+                    // 함수 내에서 선언된 변수는 함수 내에서만 유효하며 함수 외부에서는 참조할
+                    // 수 없다. 즉, 함수 내부에서 선언한 변수는 지역 변수이며 함수 외부에서 선언
+                    // 한 변수는 모두 전역 변수이다.
+                    // 콜백함수는 이름 없이 적는다
+                    document.write(that.name+"("+mem+")");
+                });
+            }
+        }
+        group.membership();
+        
+
+// this.member.forEach(mem=>{
+//     console.log(this);
+//     document.write(that.name+"("+mem+")");
+// });
+
+// let group={
+//             name:'모임',
+//             member:['소정','주환','승진','태종'],
+//             membership(){
+//                 console.log(this); // 여기서 this는 group을 가리킨다
+//                 let that=this;
+                
+//                 this.member.forEach(mem=>document.write(that.name+"("+mem+")"));
+//             }
+//         }
+//         group.membership();
+
+    </script>
+</body>
+
+</html>

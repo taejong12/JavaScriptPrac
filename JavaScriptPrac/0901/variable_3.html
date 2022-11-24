@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable</title>
+</head>
+<body>
+    <script>
+        function hello(){
+            console.log(1,world);  // function world(){...}
+            world="world";
+            console.log(2,world) // world
+            var world;
+            console.log(3,world); // world
+            function world(){
+                console.log("hello world");
+            }
+            console.log(3, world); // world
+        }
+        hello();
+
+        foo=123;
+        console.log('foo',foo); // 123
+        var foo;
+        console.log('foo',foo); // 123
+
+        function test(){
+            xoo=1000;
+            console.log('xoo', xoo); // 1000
+            var xoo;
+            console.log('xoo', xoo); // 1000
+        }
+        test();
+        console.log('foo', foo, 'xoo', xoo); // 123 , x
+
+    </script>
+</body>
+</html>

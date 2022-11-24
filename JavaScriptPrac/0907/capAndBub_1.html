@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캡처링 버블링</title>
+    <style>
+        html, body{height:100%;}
+    </style>
+</head>
+<body>
+    <p>버블링과 캡처링 이벤트 처리
+        <button>버튼</button>
+    </p>
+
+    <script>
+        const body = document.querySelector('body');
+        const para=document.querySelector('p');
+        const button=document.querySelector('button');
+
+        //버블링
+        body.addEventListener('click',function(e){
+            console.log('Handler for body.');
+            console.log(e);
+        });
+
+        // 캡처링 = capture 옵션을 true로 설정하면 된다
+        // capture 옵션은 두 가지 값을 가질 수 있습니다.
+        // false이면(default 값) 핸들러는 버블링 단계에서 동작합니다.
+        // true이면 핸들러는 캡처링 단계에서 동작합니다.
+        para.addEventListener('click',function(e){
+            console.log('Handler for paragraph.');
+            console.log(e);
+        },/* true */);
+
+        //버블링(버튼 클릭시 타겟)
+        // button.addEventListener('click',function(e){
+        //     console.log('Handler for button.');
+        //     console.log(e);
+        // });
+
+        button.addEventListener('click',function(e){
+            console.log('Handler for button.');
+            console.log(e);
+            e.stopPropagation(); // 흐름을 막는다
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문</title>
+</head>
+
+<body>
+    <h1>if문</h1>
+    <script> //prompt 값을 입력하면 문자열로 반환된다
+        let num1 = 2; //parseInt(prompt("첫번째 숫자를 입력"));
+        let num2 = 3; //parseInt(prompt("두번째 숫자를 입력"));
+        document.write(num1 + "," + num2 + "<br>");
+
+        if (num1 == num2) {
+            document.write(num1 + "은" + num2 + "와 같습니다.");
+        } else if (num1 > num2) {
+            document.write(num1 + "은" + num2 + "보다 큽니다.");
+        } else {
+            document.write(num1 + "은" + num2 + "보다 작습니다.");
+        }
+    </script>
+
+    <h1>switch문</h1>
+    <script>
+        let x = 10;
+        switch (typeof x) {
+            case "number":
+                document.write("x의 타입은 숫자" + x);
+                break;
+            case "string":
+                document.write("x의 타입은 문자열" + x);
+                break;
+            case "object":
+                document.write("x의 타입은 객체" + x);
+                break;
+            default:
+                document.write("x의 타입은 뭐지" + x);
+                break;
+        }
+
+        document.write("<br>");
+       
+        let day = new Date().getDay(); //오늘의 요일 반환(일요일:0~토요일:6)
+        switch (day) {
+            case 1:
+                // document.write("주말이 아닙니다.");
+                // break;
+            case 2:
+                // document.write("주말이 아닙니다.");
+                // break;
+            case 3:
+                // document.write("주말이 아닙니다.");
+                // break;
+            case 4:
+                document.write("주말이 아닙니다.");
+                break;
+            case 5:
+                document.write("불금"+"<br>");
+                break;
+            default:
+                document.write("즐거운 주말");
+        }
+
+        document.write("<br>");
+       
+        
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>funcType</title>
+</head>
+
+<body>
+    // 고차함수 함수 내에 또 다른 함수
+    // 리턴 평션
+    // 특정한 상황이 발생했을 시스템이 알아서 함수를 실행하는것 콜백함수
+    <button id="button">버튼 클릭</button>
+    <script>
+        let btn = document.getElementById('button');
+        btn.addEventListener('click', function () {
+            window.alert('버튼을 눌렀어요.');
+            doSomething();
+        })
+        function doSomething() {
+            let name = "홍";
+            setTimeout(function () {
+                window.alert('내 성은 ' + name + '입니다');
+            }, 1000);
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

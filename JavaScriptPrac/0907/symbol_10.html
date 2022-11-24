@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+
+<body>
+    원시타입(primitive data type)
+    Number, String, Boolean, undefined, null
+    symbol
+    객체 타입(Object type)
+    Object
+    ================================================================
+    충돌 위험이 없는 유일한 객체의 프로퍼티키를 만들기 위해 사용
+
+    심볼은 생성이 되면 그 다음에 생성되는 심볼과는 구분이 된다
+    둘은 같을 수가 없다
+    생성자가 없기에 new를 호출할 수 없다 직접적으로 호출
+
+    <script>
+        const s1 = Symbol();
+        const s2 = Symbol();
+        console.log(s1, s2);
+        console.log(s1 == s2);
+
+        const as1 = Symbol('a');
+        const as2 = Symbol('a');
+        console.log(as1, as2);
+        console.log(as1 == as2);
+        console.log(as1 === as2);
+
+        const s3 = s1;
+        console.log(s3, s1);
+        console.log(s3 == s1, s3 === s1);
+
+        // Symbol.for(key) 메서드는 주어진 키를 사용해 런타임 범위의 심볼 레지스트리에서 존재하는 심볼을 찾고, 존재할 경우 이를 반환합니다.
+        // 존재하지 않는 경우에는 해당 키를 사용해 전역 심볼 레지스트리에 새로운 심볼을 생성합니다.
+        const fs1 = Symbol.for('uni');
+        const fs2 = Symbol.for('uni');
+        console.log(fs1 == fs2, fs1 === fs2, fs1, fs2);
+
+        const obj = new Object();
+        obj.prop = 'myProp';
+        obj[123] = 123;
+        obj['prop' + 123] = false;
+        console.log(obj);
+
+        console.log("obj2===========================================")
+        
+        const obj2 = {};
+        const mySym = Symbol('mine');
+        obj2[mySym] = 123;
+        obj2.propKey = 'propValue';
+        console.log(obj2);
+        console.log(obj2[mySym]);
+        console.log(obj2.mySym);
+        console.log(Object.keys(obj2));
+        console.log(Object.getOwnPropertySymbols(obj2));
+        console.log(Reflect.ownKeys(obj2));
+
+        console.log("obj3===========================================")
+
+        const obj3 = new Object();
+        anotherLibFunc(obj3);
+        console.log(obj3);
+        libFunc(obj3);
+        console.log(obj3);
+        function libFunc(obj) { obj.id = 0; }
+        function anotherLibFunc(obj) { obj.id = 1002; }
+
+        const libKey = Symbol('libKey');
+        function libFunc2(obj){obj[libKey]=0;}
+        anotherLibFunc(obj3);
+        console.log(obj3);
+        libFunc2(obj3);
+        console.log(obj3);
+
+
+
+    </script>
+
+</body>
+
+</html>

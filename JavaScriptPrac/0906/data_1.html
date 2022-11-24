@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체함수</title>
+</head>
+
+<body>
+    <script>
+        let now = new Date();
+        console.log(now);
+        console.log(new Date("December 14,2011 15:30:10"));
+        console.log(new Date(8000000000)); // 1970년 1월 1일 기준
+        console.log(new Date(16, 5, 25)); // 1900년 기준
+        console.log(new Date(16, 5, 25, 15, 40, 0));
+        console.log(new Date(2016, 5, 25, 15, 40, 0));
+
+        let nowMilSec = Date.now();
+        console.log(nowMilSec);
+        console.log(new Date(nowMilSec));
+
+        let date = new Date();
+        console.log(date.getFullYear(), date.getMonth() + 1, date.getDate());
+
+        let day;
+        switch (date.getDay()) {
+            case 0: day = '일';
+                break;
+            case 1: day = '월';
+                break;
+            case 2: day = '화';
+                break;
+            case 3: day = '수';
+                break;
+            case 4: day = '목';
+                break;
+            case 5: day = '금';
+                break;
+            case 6: day = '토';
+                break;
+
+        }
+        console.log(day + '요일');
+
+        let days = ['일', '월', '화', '수', '목', '금', '토'];
+        console.log(days[date.getDay()] + '요일');
+
+        let period = date.getTime() / 864000000;
+        console.log(period);
+        console.log(Math.floor(period), period.toFixed());
+
+        date.setFullYear(2022, 8, 6);
+        console.log(date);
+        console.log(date.getFullYear(), date.getMonth() + 1, date.getDate());
+        date.setDate(30);
+        console.log(date);
+        date.setDate(45);
+        console.log(date);
+
+        console.log(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+        date.setHours(10, 30, 30);
+        console.log(date);
+
+        function printNow() {
+            let date1 = new Date();
+            let year = date1.getFullYear();
+            let month = date1.getMonth() + 1;
+            let date = date1.getDate();
+            let hour = date1.getHours();
+            let min = date1.getMinutes();
+            let sec = date1.getSeconds();
+
+            let ampm = hour >= 12 ? 'PM' : 'AM';
+            hour %= 12;
+            hour = hour ? hour : 12;
+            hour = hour < 10 ? '0' + hour : hour;
+            min = min < 10 ? '0' + min : min;
+            sec = sec < 10 ? '0' + sec : sec;
+
+            let day;
+            switch (date1.getDay()) {
+                case 0: day = '일';
+                    break;
+                case 1: day = '월';
+                    break;
+                case 2: day = '화';
+                    break;
+                case 3: day = '수';
+                    break;
+                case 4: day = '목';
+                    break;
+                case 5: day = '금';
+                    break;
+                case 6: day = '토';
+                    break;
+            }
+            // let days = ['일', '월', '화', '수', '목', '금', '토'];
+
+            console.log(year + "년" + month + "월" + date + "일" + /* days[date1.getDay()] */day + "요일" + hour + ":" + min + ":" + sec + ampm);
+            setTimeout(printNow, 1000);
+        }
+        printNow();
+
+    </script>
+</body>
+
+</html>

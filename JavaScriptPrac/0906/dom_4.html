@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 구조</title>
+    <style>
+        .color {
+            color: brown;
+        }
+
+        .color2 {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>도시</h1>
+        <ul>
+            <li id="one" class="color">서울</li>
+            <li id="two" class="color">대구</li>
+            <li id="three" class="color">부산</li>
+            <li id="four">대전</li>
+        </ul>
+    </div>
+
+    <script>
+        const ele = document.querySelector('#two');
+        ele.parentNode.className = 'color2';
+        const ele2 = document.querySelector('ul');
+        console.log(ele2);
+        console.log(ele2.firstChild, ele2.lastChild); // 사용하는 사람 입장에서는 의미가 없다 일반적인 경우에는 Element를 포함한 것을 사용 노드가 우리 눈에 보이지 않는다
+        console.log(ele2.firstElementChild, ele2.lastElementChild);
+        ele2.firstElementChild.className = 'color2';
+        ele2.lastElementChild.className = 'color';
+        // ele3=document.querySelector('#one');
+        console.log(ele2.firstElementChild.nextSibling, ele2.lastElementChild.previousSibling);
+        console.log(ele2.firstElementChild.nextElementSibling, ele2.lastElementChild.previousElementSibling);
+
+        ele2.firstElementChild.nextElementSibling.className = 'color2';
+        ele2.lastElementChild.previousElementSibling.className = 'color2';
+
+        const ele3 = document.getElementById('one');
+        // dir은 해당 태그든 class든 뭐든에 관련된 세부정보 알려준다
+        console.dir(ele3);
+        console.log(ele3.nodeName, ele3.nodeType, ele3.nodeValue);
+
+        const textNode = ele3.firstChild;
+        console.dir(textNode);
+        console.log(textNode.nodeName, textNode.nodeType, textNode.nodeValue);
+
+        textNode.nodeValue = '인천';
+        console.dir(textNode);
+        console.log(textNode.nodeName, textNode.nodeType, textNode.nodeValue);
+
+        console.log(ele.textContent);
+        console.log(ele3.textContent);
+        console.log(ele3.textContent = '서울');
+
+        ele3.innerHTML = '한국';
+        // ele3.innerText='한국';
+        ele3.innerHTML += '<strong class="color">, 한국</strong>';  // innerHTML 태그를 넣어준다
+        // ele3.innerText += '<strong class="color">, 한국</strong>'; // 그냥 문자열로 들어간다
+
+        const newEle = document.createElement('li'); // 요소를 생성
+        const newText = document.createTextNode('북경'); //텍스트 노드를 생성
+
+        // 해당하는 자식으로 아래에 추가해주겠다
+        // 텍스트 노드를 해당 요소의 자식으로 DOM트리상에 추가
+        newEle.appendChild(newText);
+
+        // 해당 요소를 메인 DOM트리 추가
+        document.querySelector('ul').appendChild(newEle);
+
+        const removeEle = document.getElementById('one');
+        document.querySelector('ul').insertBefore(newEle, removeEle);
+        newText.insertData(1, '중국');
+
+        // document.querySelector('ul').removeChild(removeEle);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
